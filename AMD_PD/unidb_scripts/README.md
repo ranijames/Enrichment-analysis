@@ -1,4 +1,4 @@
-# Existing workflow**
+# Existing workflow
 
 The existing workflow is depicted in Fig1. The current pipeline directly fetches data from UniDB and operates on disease cohort (ROPAD PD cohort ca. 3300 patients). Two control groups are used;
 
