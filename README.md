@@ -159,7 +159,7 @@ The above one liner should be executed for each mode (Mode= CLASS,CADD,FILTER)
 ```
 run_cmds.sh /input/path/from_basic_export/ mode /output/dir/
 ```
-## Extract the subjects or samples for restricted control
+## Extract the subjects or samples for the restricted control
 
 ```
 run_res_ctrl.sh /input/path/from_basic_export/ mode /output/dir/
@@ -169,3 +169,4 @@ run_res_ctrl.sh /input/path/from_basic_export/ mode /output/dir/
 ```
 python FE_test.py /shares/archive/develdata/ajames/GD_PD/results/lancet/pats/ /shares/archive/develdata/ajames/GD_PD/results/lancet/control/
 ```
+
