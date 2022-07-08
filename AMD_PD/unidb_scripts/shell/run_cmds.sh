@@ -13,5 +13,5 @@ do  B="$(cut -d'.' -f1 <<<"$file")"
         echo "python ../pd_pats.py -genename=$gene -mode=$2 $1/$file $3 > err_pats_$2_$gene &" >>lancet_pats_$2.sh
 done 
 
-#sh /data/ajames/GD_PD/scripts/lancet_pats_class.sh
+sh /data/ajames/GD_PD/scripts/lancet_pats_class.sh
                
