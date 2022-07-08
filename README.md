@@ -104,25 +104,25 @@ The filters are defined as functions within class general filters:
 
 # The scripts used to accomplish the above tasks are described in the below section
 
- Utility_filters.py
+ 1. Utility_filters.py
 
 Within the Utility_filters.py there are different functions for each filter type.
 
-1. filter4_gemod_exac_class_cadd : CADD filter
+- filter4_gemod_exac_class_cadd : CADD filter
 
-2. filter4_gemod_exac_class : Filter
+- filter4_gemod_exac_class : Filter
 
-3. filter4_class: Class filter
+- filter4_class: Class filter
 
-4. filter4_control_geo_tags : For country and georegion
+- filter4_control_geo_tags : For country and georegion
 
-5. filter4_QC_frq_excl_somatic : for somatic plus patient level filters for coverage, frequency and quality
+- filter4_QC_frq_excl_somatic : for somatic plus patient level filters for coverage, frequency and quality
 
-       2.  Basic export.py
+ 2.  Basic export.py
 
      Basic export helps to fetch all variants within UNIDB for a given list of genes as a new line separated input file. The basic export outputs the variants for the given list of genes with a lot of other information about the variants. The output is sufficient to apply the CADD, CLASS, and FILTER filter types. The filtered variant table is then used for further fetching of healthy individuals and ROPAD patients from UNIDB
 
-    4.  controls_restricted_Pd.py
+ 3.  controls_restricted_Pd.py
 
 The controls_restricted_Pd.py  is a small python wrapper tool that first establishes a connection to the unidb database  via a function called get_connection. After that, it calls the variant filter functions from the class utility_filters.py and apply the user mentioned filter on the input variants of the gene of interest. 
 
