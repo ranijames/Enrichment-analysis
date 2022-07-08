@@ -138,8 +138,8 @@ Where "-mode" is one of the variant filter modes (CLASS,  CADD, or FILTER). The
 The main part of the tool is mYSQL query to fetch the individuals with the given list of variants of the gene of interest. The result or the output contains the restricted control for the enrichment analysis on gene level. The SQl query contains almost all filters defined in the section "The restricted control is classified based on the following criteria:" above. The database Unidb has got only data of birth(dob) for each records. Therefore, a dob to Age converter function is also defined within the tool. The function is named as, from_dob_to_age within the script. From the age then, >18 is filtered. Besides  that, all oddly indicated ages are also removed (<120 years for example).
 
 The tool throws an error or exit when there are no records for a given gene after filtering for its variants. The output is always for a given gene, given mode of filter a CSV file with patientid and all corresponding information. The timestamp is attached to the output filename for simplification, and for future reference.
-# How to run the pipeline
 
+# How to run the pipeline
 ## Extract patient data for the given gene
 
 Make a list of new line seperated gene of interest and call it within the following shell.
@@ -147,9 +147,25 @@ Make a list of new line seperated gene of interest and call it within the follow
 ```
 sh run_basic_export.sh
 ```
+Make sure that the folder you run the above script has got a file with new line separated list of genes or single gene. The name of the file should be ´gene_list´
 
- 
-# Final Fisher extact test or enrichment anaysis
+## Extract the clear control
+```
+sh run_clear_ctrl.sh /input/path/from_basic_export/ mode /output/dir
+```
+The above one liner should be executed for each mode (Mode= CLASS,CADD,FILTER)
+
+## Extract the ROPAD patients
+```
+run_cmds.sh /input/path/from_basic_export/ mode /output/dir/
+```
+## Extract the subjects or samples for restricted control
+
+```
+run_res_ctrl.sh /input/path/from_basic_export/ mode /output/dir/
+```
+
+## Final Fisher extact test or enrichment anaysis
 ```
 python FE_test.py /shares/archive/develdata/ajames/GD_PD/results/lancet/pats/ /shares/archive/develdata/ajames/GD_PD/results/lancet/control/
 ```
