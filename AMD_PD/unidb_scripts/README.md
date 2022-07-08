@@ -1,10 +1,10 @@
-**Existing workflow**
+# Existing workflow**
 
 The existing workflow is depicted in Fig1. The current pipeline directly fetches data from UniDB and operates on disease cohort (ROPAD PD cohort ca. 3300 patients). Two control groups are used;
 
 restricted cohort  (based on age, affected status, country, exclusion of analysis types and including certain analysis types) and unrestricted group which includes all uni DB patients except disease cohort or somatic (Q: Does it mean somatic symptoms? A: No, the somatic term here refers to cancer patients who carry somatic mutations). For a given set of genes, in this case, study 27 PD-Gaucher Disease-related GWAS genes (Q: Can we link the accession IDs of these genes and their GWAS scores here?), these genes and their associated variants are filtered/selected. On these selected genes, the variant filter is applied; these filtering criteria are H; H, AF frequency; H, M, AF, Cadd >= 4. For each cohort, the number of unique patients with variants per GWAS genes is reported. The existing WF performs Fischer's exact test/hypergeometric test and multiple hypothesis tests which enables us to estimate the statistical significance of the variants between control and disease cohorts and enrichment/depletion level. 
 
-Existing pipeline 
+# Existing pipeline 
 Data set used for developing the above pipeline
 
 The existing pipeline is designed to identify the enriched genes within the ROPAD Pd patients within the unidb database versus two types of controls. The first type of control is restricted control. The second type of control is clear control.
