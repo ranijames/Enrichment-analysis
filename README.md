@@ -138,6 +138,15 @@ Where "-mode" is one of the variant filter modes (CLASS,  CADD, or FILTER). The
 The main part of the tool is mYSQL query to fetch the individuals with the given list of variants of the gene of interest. The result or the output contains the restricted control for the enrichment analysis on gene level. The SQl query contains almost all filters defined in the section "The restricted control is classified based on the following criteria:" above. The database Unidb has got only data of birth(dob) for each records. Therefore, a dob to Age converter function is also defined within the tool. The function is named as, from_dob_to_age within the script. From the age then, >18 is filtered. Besides  that, all oddly indicated ages are also removed (<120 years for example).
 
 The tool throws an error or exit when there are no records for a given gene after filtering for its variants. The output is always for a given gene, given mode of filter a CSV file with patientid and all corresponding information. The timestamp is attached to the output filename for simplification, and for future reference.
+# How to run the pipeline
+
+## Extract patient data for the given gene
+
+Make a list of new line seperated gene of interest and call it within the following shell.
+
+‘‘‘
+sh run_basic_export.sh
+‘‘‘
 
  
 # Final Fisher extact test or enrichment anaysis
