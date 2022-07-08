@@ -144,9 +144,9 @@ The tool throws an error or exit when there are no records for a given gene afte
 
 Make a list of new line seperated gene of interest and call it within the following shell.
 
-‘‘‘
+```
 sh run_basic_export.sh
-‘‘‘
+```
 
  
 # Final Fisher extact test or enrichment anaysis
