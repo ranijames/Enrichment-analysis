@@ -132,3 +132,5 @@ The main part of the tool is mYSQL query to fetch the individuals with the given
 The tool throws an error or exit when there are no records for a given gene after filtering for its variants. The output is always for a given gene, given mode of filter a CSV file with patientid and all corresponding information. The timestamp is attached to the output filename for simplification, and for future reference.
 
  
+Final Fisher extact test or enrichment anaysis
+´python FE_test.py /shares/archive/develdata/ajames/GD_PD/results/lancet/pats/ /shares/archive/develdata/ajames/GD_PD/results/lancet/control/‘
