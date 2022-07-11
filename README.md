@@ -7,7 +7,6 @@ The existing workflow is depicted in Fig1. The current pipeline directly fetches
 - Restricted cohort
 -   (based on age, affected status, country, exclusion of analysis types and including certain analysis types) 
 -    unrestricted group which includes all uni DB patients except disease cohort or somatic (Q: Does it mean somatic symptoms? A: No, the somatic term here refers to cancer patients who carry somatic mutations).
--     For a given set of genes, in this case, study 27 PD-Gaucher Disease-related GWAS genes, these genes and their associated variants are filtered/selected. 
 -     On these selected genes, the variant filter is applied; these filtering criteria are H; H, AF frequency; H, M, AF, Cadd >= 4. 
 -     For each cohort, the number of unique patients with variants per GWAS genes is reported. 
 
