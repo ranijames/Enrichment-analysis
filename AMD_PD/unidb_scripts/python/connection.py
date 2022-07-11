@@ -12,7 +12,7 @@ def get_connection(settings):
     """
     Creates database connection.
 
-    @param: settings: dictionary loaded from a yaml file with the necessary details for the connection with unidb.
+    @param: settings: dictionary loaded from a yaml file with the necessary details for the connection with db.
     """
     host = settings["database_credentials"]["host"]
     user = settings["database_credentials"]["user"]
