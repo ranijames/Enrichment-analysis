@@ -2,7 +2,7 @@
 
 # Existing workflow
 
-The existing workflow is depicted in Fig1. The current pipeline directly fetches data from UniDB and operates on disease cohort (ROPAD PD cohort ca. 3300 patients). Two control groups are used;
+The existing workflow is depicted in Fig1. The current pipeline directly fetches data from the database and operates on disease cohort (ROPAD PD cohort ca. 3300 patients). Two control groups are used;
 
 - Restricted cohort
 -   (based on age, affected status, country, exclusion of analysis types and including certain analysis types) 
@@ -16,7 +16,7 @@ The existing WF performs Fischer's exact test/hypergeometric test and multiple h
 # Existing pipeline 
 Data set used for developing the above pipeline
 
-The existing pipeline is designed to identify the enriched genes within the ROPAD Pd patients within the unidb database versus two types of controls. The first type of control is restricted control. The second type of control is clear control.
+The existing pipeline is designed to identify the enriched genes within the ROPAD Pd patients within the database versus two types of controls. The first type of control is restricted control. The second type of control is clear control.
 
 The restricted control is classified based on the following criteria:
 - Age above 18
@@ -26,7 +26,7 @@ The restricted control is classified based on the following criteria:
 - Exclude all related panel and WGS used in disease cohort, and SOMATIC (SOM, PiCOP) 
 - Include ILLUWES, ILLUWESAGI, ILLUWESTWIST, ILLUWESTWIST_V2,  ILLUWGS, ILLUDRAGEN_WGS
 - The clear control conditions are:
-- All uniDB patients, except disease cohort or somatic
+- All patients, except disease cohort or somatic
 - The disease group 
 - ROPAD PD patients
 
@@ -65,7 +65,7 @@ effectclass == "HIGH"| "effectclass" =="MODERATE"
 
 Patient-level  or control individual filters
 
-The above filters are used to fetch each gene's variants from UNIDB (the database). For the extracted variants, we then need to extract the controls and ROPAD patients. After that, there are some patient or control level filters applied to fetch the patients and both controls from the unidb.  The patient-level/control individual level  filters are,
+The above filters are used to fetch each gene's variants from the database. For the extracted variants, we then need to extract the controls and ROPAD patients. After that, there are some patient or control level filters applied to fetch the patients and both controls from the database.  The patient-level/control individual level  filters are,
 
 ## On patient or control individual
 
@@ -89,7 +89,7 @@ quality >= 220
 
 The pipeline is developed mainly in python, MSQL queries with helper scripts written in shell.  
 
-Within the GitHub page, we have the following python tool to derive all the restricted control from the unidb
+Within the GitHub page, we have the following python tool to derive all the restricted control from the database
 
 The filters are defined as functions within class general filters:
 
@@ -120,11 +120,11 @@ Within the Utility_filters.py there are different functions for each filter type
 
  2.  Basic export.py
 
-     Basic export helps to fetch all variants within UNIDB for a given list of genes as a new line separated input file. The basic export outputs the variants for the given list of genes with a lot of other information about the variants. The output is sufficient to apply the CADD, CLASS, and FILTER filter types. The filtered variant table is then used for further fetching of healthy individuals and ROPAD patients from UNIDB
+     Basic export helps to fetch all variants within datbase for a given list of genes as a new line separated input file. The basic export outputs the variants for the given list of genes with a lot of other information about the variants. The output is sufficient to apply the CADD, CLASS, and FILTER filter types. The filtered variant table is then used for further fetching of healthy individuals and ROPAD patients from database
 
  3.  controls_restricted_Pd.py
 
-The controls_restricted_Pd.py  is a small python wrapper tool that first establishes a connection to the unidb database  via a function called get_connection. After that, it calls the variant filter functions from the class utility_filters.py and apply the user mentioned filter on the input variants of the gene of interest. 
+The controls_restricted_Pd.py  is a small python wrapper tool that first establishes a connection to the database  via a function called get_connection. After that, it calls the variant filter functions from the class utility_filters.py and apply the user mentioned filter on the input variants of the gene of interest. 
 
 # The inputs for the tool are,
 
@@ -135,7 +135,7 @@ The name of gene of interest as parameter "-genename"
 
 Where "-mode" is one of the variant filter modes (CLASS,  CADD, or FILTER). The "-genename"  is the gene_symbol of the gene of interest. output path is the path where you need your output and the input is the variants of the gene of interest, this is the output from the basic_export.py script
 
-The main part of the tool is mYSQL query to fetch the individuals with the given list of variants of the gene of interest. The result or the output contains the restricted control for the enrichment analysis on gene level. The SQl query contains almost all filters defined in the section "The restricted control is classified based on the following criteria:" above. The database Unidb has got only data of birth(dob) for each records. Therefore, a dob to Age converter function is also defined within the tool. The function is named as, from_dob_to_age within the script. From the age then, >18 is filtered. Besides  that, all oddly indicated ages are also removed (<120 years for example).
+The main part of the tool is mYSQL query to fetch the individuals with the given list of variants of the gene of interest. The result or the output contains the restricted control for the enrichment analysis on gene level. The SQl query contains almost all filters defined in the section "The restricted control is classified based on the following criteria:" above. The database has got only data of birth(dob) for each records. Therefore, a dob to Age converter function is also defined within the tool. The function is named as, from_dob_to_age within the script. From the age then, >18 is filtered. Besides  that, all oddly indicated ages are also removed (<120 years for example).
 
 The tool throws an error or exit when there are no records for a given gene after filtering for its variants. The output is always for a given gene, given mode of filter a CSV file with patientid and all corresponding information. The timestamp is attached to the output filename for simplification, and for future reference.
 
@@ -167,6 +167,6 @@ run_res_ctrl.sh /input/path/from_basic_export/ mode /output/dir/
 
 ## Final Fisher extact test or enrichment anaysis
 ```
-python FE_test.py /shares/archive/develdata/ajames/GD_PD/results/lancet/pats/ /shares/archive/develdata/ajames/GD_PD/results/lancet/control/
+python FE_test.py //GD_PD/results/lancet/pats/ /GD_PD/results/lancet/control/
 ```
 
